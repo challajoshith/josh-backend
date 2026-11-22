@@ -11,5 +11,5 @@ app = FastAPI()
 @app.get('/name')
 def get_name():
     df = pd.read_excel(sheet,header = None)
-    value = df.iloc[0,0]
+    value = df.iloc[1,1]
     return {'name': str(value)}
