@@ -4,4 +4,4 @@ app = FastAPI()
 
 @app.get('/name')
 def get_name():
-    return {'name':'hello every one'}
+    return {'name':'this is josh'}
