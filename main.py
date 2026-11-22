@@ -1,15 +1,16 @@
 import pandas as pd
-from pathlib import Path
-from fastapi import FastAPI 
-
-sheet = "https://docs.google.com/spreadsheets/d/1xeDb643KkXquTrzkn5m1vnB0E-RETqJSX2DjLyx3v5U/edit?gid=1488283114#gid=1488283114"
-
-
+from fastapi import FastAPI
 
 app = FastAPI()
 
-@app.get('/name')
+SHEET_URL = (
+    "https://docs.google.com/spreadsheets/d/"
+    "1xeDb643KkXquTrzkn5m1vnB0E-RETqJSX2DjLyx3v5U"
+    "/export?format=csv&gid=1488283114"
+)
+
+
+@app.get("/name")
 def get_name():
-    df = pd.read_excel(sheet,header = None)
-    value = df.iloc[0,0]
-    return {'name': str(value)}
+    df = pd.read_csv(SHEET_URL, header=None)
+    return {"name": str(df.iloc[0, 0])}
