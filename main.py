@@ -13,4 +13,5 @@ SHEET_URL = (
 @app.get("/name")
 def get_name():
     df = pd.read_csv(SHEET_URL, header=None)
-    return {"name": str(df.iloc[0, 0])}
+    row = df.iloc[0].astype(str).tolist()
+    return {"name": ", ".join(row)}
